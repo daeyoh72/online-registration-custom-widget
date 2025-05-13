@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CustRegistration Widget</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .widget-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 340px;
+      height: 250px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      background: radial-gradient(circle at 50% 50%, #ffffff, #004990);
+      color: #0a3166;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .widget-header {
+      font-size: 1.6em;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .widget-subheader {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .hover-button {
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+      padding: 12px 24px;
+      font-size: 1.125em;
+      color: white;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: transparent;
+      cursor: pointer;
+      text-align: center;
+      transition: opacity 0.4s ease;
+      text-decoration: none;
+      z-index: 2;
+    }
+
+    .widget-container:hover .hover-button {
+      opacity: 1;
+    }
+
+    .hover-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-container" id="widget">
+    <div>
+      <h1 class="widget-header">Register for Online/App Access</h1>
+      <p class="widget-subheader">Order Online Or On The OE Touch App</p>
+    </div>
+    <a href="https://www.johnstonesupply.com/store652/oe-touch-web-access" target="_blank" class="hover-button">Register Online</a>
+  </div>
+
+  <script>
+    const widget = document.getElementById("widget");
+
+    widget.addEventListener("mousemove", (e) => {
+      const rect = widget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      widget.style.background = `radial-gradient(circle at ${x}px ${y}px, #ffffff, #004990)`;
+    });
+
+    widget.addEventListener("mouseleave", () => {
+      widget.style.background = "radial-gradient(circle at 50% 50%, #ffffff, #004990)";
+    });
+  </script>
+</body>
+</html>
