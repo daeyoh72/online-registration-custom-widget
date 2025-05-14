@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CustRegistration Widget</title>
+  <title>Online Reg Widget</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     html, body {
@@ -27,23 +27,39 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      background: radial-gradient(circle at 50% 50%, #ffffff, #004990);
+      background: linear-gradient(to bottom, #ffffff, #004990);
       color: #0a3166;
       text-decoration: none;
-      transition: background 0.3s ease;
       box-sizing: border-box;
       overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.3), transparent 60%);
+      mix-blend-mode: screen;
+      transition: background-position 0.1s ease;
+      z-index: 1;
     }
 
     .widget-header {
       font-size: 1.6em;
       font-weight: 700;
       margin: 0 0 10px;
+      z-index: 2;
+      position: relative;
     }
 
     .widget-subheader {
       font-size: 1em;
       margin: 0;
+      z-index: 2;
+      position: relative;
     }
 
     .hover-button {
@@ -63,6 +79,7 @@
       transition: opacity 0.4s ease;
       text-decoration: none;
       z-index: 2;
+      position: relative;
     }
 
     .widget-container:hover .hover-button {
@@ -76,6 +93,7 @@
 </head>
 <body>
   <div class="widget-container" id="widget">
+    <div class="glow" id="glow"></div>
     <div>
       <h1 class="widget-header">Register for Online/App Access</h1>
       <p class="widget-subheader">Order Online Or On The OE Touch App</p>
@@ -85,17 +103,18 @@
 
   <script>
     const widget = document.getElementById("widget");
+    const glow = document.getElementById("glow");
 
     widget.addEventListener("mousemove", (e) => {
       const rect = widget.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      widget.style.background = `radial-gradient(circle at ${x}px ${y}px, #ffffff, #004990)`;
+      glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.3), transparent 60%)`;
     });
 
     widget.addEventListener("mouseleave", () => {
-      widget.style.background = "radial-gradient(circle at 50% 50%, #ffffff, #004990)";
+      glow.style.background = `radial-gradient(circle at center, rgba(255,255,255,0.3), transparent 60%)`;
     });
   </script>
 </body>
